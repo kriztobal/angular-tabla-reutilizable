@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Productos } from '../../models/producto.model';
 import { TableComponent } from '../../shared/table/table.component';
 
 @Component({
@@ -18,7 +19,7 @@ export class SegundaTablaComponent {
     { key: 'categoria', label: 'Categoría' }
   ];
 
-  datos = [
+  datos: Productos[] = [
     { producto: 'Laptop', precio: 15000, stock: 10, categoria: 'Electrónica' },
     { producto: 'Mouse', precio: 300, stock: 50, categoria: 'Accesorios' },
     { producto: 'Teclado', precio: 800, stock: 20, categoria: 'Accesorios' }

@@ -11,8 +11,10 @@ import { Component, Input } from '@angular/core';
 
 export class TableComponent {
 
-  // Recibe datos desde otro componente
+  // Recibe los datos a mostrar en la tabla, cada objeto representa una fila
   @Input() data: any[] = [];
+
+  // Recibe las columnas a mostrar en la tabla, con su clave y etiqueta
   @Input() columns: { key: string, label: string }[] = [];
 
 }
