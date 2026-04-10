@@ -18,7 +18,11 @@ export class PrimerTablaComponent {
   columnas = [
     { key: 'nombre', label: 'Nombre' },
     { key: 'apellidos', label: 'Apellidos' },
-    { key: 'empleado', label: 'Empleado' }
+    { 
+      key: 'empleado', 
+      label: 'Empleado',
+      format: (value: boolean) => value ? 'Sí' : 'No' 
+    }
   ];
   
   /* 
