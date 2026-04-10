@@ -1,0 +1,35 @@
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { Persona } from '../../models/persona.model';
+import { TableComponent } from '../../shared/table/table.component';
+
+@Component({
+  selector: 'app-primer-tabla',
+  standalone: true,
+  imports: [CommonModule, TableComponent],
+  templateUrl: './primer-tabla.component.html',
+  styleUrl: './primer-tabla.component.css'
+})
+export class PrimerTablaComponent {
+  /* 
+   * Columnas de la tabla, cada columna tiene una clave (key) que corresponde 
+  a la propiedad del objeto persona y una etiqueta (label) que se muestra en la tabla.
+   */
+  columnas = [
+    { key: 'nombre', label: 'Nombre' },
+    { key: 'apellidos', label: 'Apellidos' },
+    { key: 'empleado', label: 'Empleado' }
+  ];
+  
+  /* 
+   * Datos de las personas, cada objeto representa una fila en la tabla.
+   */
+  personas: Persona[] = [
+    { nombre: 'Juan', apellidos: 'Pérez López', empleado: true },
+    { nombre: 'María', apellidos: 'García Torres', empleado: false },
+    { nombre: 'Carlos', apellidos: 'Ramírez Díaz', empleado: true },
+    { nombre: 'Ana', apellidos: 'Martínez Ruiz', empleado: true },
+    { nombre: 'Luis', apellidos: 'Hernández Cruz', empleado: false },
+  ];  
+
+}
