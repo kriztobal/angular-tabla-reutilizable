@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Persona } from '../../models/persona.model';
 import { TableComponent } from '../../shared/table/table.component';
+import { Column } from '../../shared/types/column.type'; 
 
 @Component({
   selector: 'app-primer-tabla',
@@ -11,17 +12,18 @@ import { TableComponent } from '../../shared/table/table.component';
   styleUrl: './primer-tabla.component.css'
 })
 export class PrimerTablaComponent {
+  
   /* 
-   * Columnas de la tabla, cada columna tiene una clave (key) que corresponde 
+  * Columnas de la tabla, cada columna tiene una clave (key) que corresponde 
   a la propiedad del objeto persona y una etiqueta (label) que se muestra en la tabla.
-   */
-  columnas = [
-    { key: 'nombre', label: 'Nombre' },
-    { key: 'apellidos', label: 'Apellidos' },
-    { 
-      key: 'empleado', 
+  */
+ columnas: Column<Persona>[] = [
+   { key: 'nombre', label: 'Nombre' },
+   { key: 'apellidos', label: 'Apellidos' },
+   { 
+     key: 'empleado', 
       label: 'Empleado',
-      format: (value: boolean) => value ? 'Sí' : 'No' 
+      format: (value) => value ? 'Sí' : 'No' 
     }
   ];
   
@@ -34,6 +36,5 @@ export class PrimerTablaComponent {
     { nombre: 'Carlos', apellidos: 'Ramírez Díaz', empleado: true },
     { nombre: 'Ana', apellidos: 'Martínez Ruiz', empleado: true },
     { nombre: 'Luis', apellidos: 'Hernández Cruz', empleado: false },
-  ];  
-
+  ];
 }
