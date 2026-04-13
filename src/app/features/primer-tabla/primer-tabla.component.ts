@@ -1,20 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+//import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Persona } from '../../models/persona.model';
 import { TableComponent } from '../../shared/table/table.component';
 import { Column } from '../../shared/types/column.type'; 
+import { EmpleadosService } from '../../services/empleados.service';
 
 @Component({
   selector: 'app-primer-tabla',
   standalone: true,
-  imports: [CommonModule, TableComponent, HttpClientModule],
+  imports: [CommonModule, TableComponent],
   templateUrl: './primer-tabla.component.html',
   styleUrl: './primer-tabla.component.css'
 })
 export class PrimerTablaComponent {
 
-  constructor(private http: HttpClient) {}
+  constructor(private empleadosService: EmpleadosService) {}
   
   /* 
   * Columnas de la tabla, cada columna tiene una clave (key) que corresponde 
@@ -36,7 +37,7 @@ export class PrimerTablaComponent {
   personas: Persona[] = [];
 
   obtenerEmpleados() {
-    this.http.get<Persona[]>('http://localhost:3000/api/empleados')
+    this.empleadosService.obtenerEmpleados()
       .subscribe(data => {
         this.personas = data;
       });
