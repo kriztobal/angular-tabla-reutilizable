@@ -41,6 +41,16 @@ tbody tr:hover {
   font-weight: bold;
 }
 
+.boolean-true {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.boolean-false {
+  color: #dc2626;
+  font-weight: bold;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   th, td {

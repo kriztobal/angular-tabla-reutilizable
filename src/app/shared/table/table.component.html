@@ -12,11 +12,16 @@
             <tbody>
                 <tr *ngFor="let row of data">
                     <td *ngFor="let col of columns">
-                      {{
-                        col.format
-                        ? col.format(row[col.key])
-                        : row[col.key]
-                      }}
+
+                    <span 
+                        [ngClass]="{
+                        'boolean-true': row[col.key] === true,
+                        'boolean-false': row[col.key] === false
+                        }"
+                    >
+                        {{ formatValue(row[col.key]) }}
+                    </span>
+
                     </td>
                 </tr>
             </tbody>

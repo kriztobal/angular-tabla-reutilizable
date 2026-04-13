@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Persona } from '../../models/persona.model';
 import { TableComponent } from '../../shared/table/table.component';
 import { Column } from '../../shared/types/column.type'; 
@@ -7,11 +8,13 @@ import { Column } from '../../shared/types/column.type';
 @Component({
   selector: 'app-primer-tabla',
   standalone: true,
-  imports: [CommonModule, TableComponent],
+  imports: [CommonModule, TableComponent, HttpClientModule],
   templateUrl: './primer-tabla.component.html',
   styleUrl: './primer-tabla.component.css'
 })
 export class PrimerTablaComponent {
+
+  constructor(private http: HttpClient) {}
   
   /* 
   * Columnas de la tabla, cada columna tiene una clave (key) que corresponde 
@@ -30,11 +33,16 @@ export class PrimerTablaComponent {
   /* 
    * Datos de las personas, cada objeto representa una fila en la tabla.
    */
-  personas: Persona[] = [
-    { nombre: 'Juan', apellidos: 'Pérez López', empleado: true },
-    { nombre: 'María', apellidos: 'García Torres', empleado: false },
-    { nombre: 'Carlos', apellidos: 'Ramírez Díaz', empleado: true },
-    { nombre: 'Ana', apellidos: 'Martínez Ruiz', empleado: true },
-    { nombre: 'Luis', apellidos: 'Hernández Cruz', empleado: false },
-  ];
+  personas: Persona[] = [];
+
+  obtenerEmpleados() {
+    this.http.get<Persona[]>('http://localhost:3000/api/empleados')
+      .subscribe(data => {
+        this.personas = data;
+      });
+  }
+  
+  ngOnInit() {
+    this.obtenerEmpleados();
+  }
 }

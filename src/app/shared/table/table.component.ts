@@ -1,11 +1,11 @@
-import { NgForOf } from '@angular/common';
+import { NgClass, NgForOf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Column } from '../types/column.type';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [NgForOf],
+  imports: [NgClass, NgForOf],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
@@ -20,5 +20,21 @@ export class TableComponent<T> {
   // que se muestra en la tabla. Además, puede tener una función de 
   // formato opcional para personalizar la visualización de los datos.
   @Input() columns: Column<T>[] = [];
+
+  formatValue(value: unknown): string {
+    if (typeof value === 'boolean') {
+      return value ? 'Sí': 'No';
+    }
+
+    if (typeof value === 'number') {
+      return new Intl.NumberFormat('es-MX').format(value);
+    }
+
+    if (value === null || value === undefined) {
+      return '-';
+    }
+
+    return String(value);
+  }
 
 }
