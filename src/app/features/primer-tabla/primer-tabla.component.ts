@@ -1,10 +1,9 @@
+import { Column } from '../../shared/types/column.type'; 
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-//import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { EmpleadosService } from '../../services/empleados/empleados.service';
 import { Persona } from '../../models/persona.model';
 import { TableComponent } from '../../shared/table/table.component';
-import { Column } from '../../shared/types/column.type'; 
-import { EmpleadosService } from '../../services/empleados.service';
 
 @Component({
   selector: 'app-primer-tabla',

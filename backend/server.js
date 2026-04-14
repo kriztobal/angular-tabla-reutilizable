@@ -12,9 +12,21 @@ const empleados = [
   { nombre: 'Berenice', apellidos: 'Sun García', empleado: false }
 ];
 
+const productos = [
+  { producto: 'Laptop', precio: 15000, stock: 10, categoria: 'Electrónica' },
+  { producto: 'Mouse', precio: 300, stock: 50, categoria: 'Accesorios' },
+  { producto: 'Teclado', precio: 800, stock: 20, categoria: 'Accesorios' }
+];
+
+
 // Endpoint GET
 app.get('/api/empleados', (req, res) => {
   res.json(empleados);
+});
+
+// Endpoint GET
+app.get('/api/productos', (req, res) => {
+  res.json(productos);
 });
 
 app.listen(3000, () => {
